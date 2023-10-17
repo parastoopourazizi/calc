@@ -6,6 +6,7 @@ function Calculator(){
 
     const clickHandler = (e) => {
         let input = e.target.innerText
+        if(input == '.' && result.includes('.')) return
         setResult(result + input)
     }
 
