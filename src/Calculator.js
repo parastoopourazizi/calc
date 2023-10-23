@@ -3,10 +3,26 @@ import './Calculator.css'
 function Calculator(){
 
     let[result , setResult] = useState('')
+    let[hasDot , setHadDot] = useState(false)
+    let operators = ['+' , '-' , '*' , '/']
+
+    const checkInput = (text) => {
+        if (text == '×') return '*' 
+        if (text == '÷') return '/'
+        return text
+    }
 
     const clickHandler = (e) => {
-        let input = e.target.innerText
-        if(input == '.' && result.includes('.')) return
+        let input = checkInput(e.target.innerText)
+        if(input == '.' ) {
+            if(hasDot == true)return
+            else{
+                setHadDot(true)
+            }
+        }
+        if(operators.includes(input)){
+            setHadDot(false)
+        }
         setResult(result + input)
     }
     
@@ -18,7 +34,8 @@ function Calculator(){
     }
 
     const equalBtn = () => {
-        setResult (eval(result))
+        setResult (String(eval(result)))
+        setHadDot (false)
     }
 
 
