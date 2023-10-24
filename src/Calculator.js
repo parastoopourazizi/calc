@@ -28,8 +28,13 @@ function Calculator(){
     
     const clearBtn = () => {
         setResult ('')
+        setHadDot(false)
     }
     const backSpaceBtn = () => {
+        if(result.endsWith('.')
+        
+        )
+        setHadDot(false)
         setResult (result.slice(0,-1))
     }
 
